@@ -102,3 +102,13 @@ http://localhost:5000/api/inventario/:id
 ```
 
 [ejemplo postman](https://www.postman.com/security-engineer-64827471/workspace/backend-facstock/request/41936041-74969ffd-1108-4744-b42e-1f8ac8e353af?action=share&source=copy-link&creator=41936041&ctx=documentation)
+
+* Obtener Historial de Movimientos
+
+permisos -> admin
+
+parametros -> ?productId=ID_AQUÍ
+
+```JSON
+http://localhost:5000/api/inventario/movements/history?productId=ID_AQUÍ
+```

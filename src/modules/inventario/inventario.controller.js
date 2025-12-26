@@ -62,3 +62,17 @@ export const deleteProduct = async (req, res) => {
     res.status(400).json({ message: error.message });
   }
 };
+
+
+export const getAllMovements = async (req, res) => {
+  try {
+    // Si pasas ?productId=ID en la URL, filtrará solo ese producto
+    const { productId } = req.query;
+    const filter = productId ? { productId } : {};
+    
+    const movements = await inventoryService.getMovements(filter);
+    res.json(movements);
+  } catch (error) {
+    res.status(500).json({ message: error.message });
+  }
+};

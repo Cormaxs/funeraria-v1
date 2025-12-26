@@ -2,7 +2,7 @@ import express from 'express';
 import { protect, authorize } from '../auth/auth.middleware.js';
 import { addProduct, getInventory, createMovement, getProductById, 
     updateProduct, 
-    deleteProduct, } from './inventario.controller.js';
+    deleteProduct, getAllMovements} from './inventario.controller.js';
 
 const router = express.Router();
 
@@ -17,5 +17,6 @@ router.post('/products/:productId/movement', protect, createMovement);
 router.put('/:id', protect, authorize('admin', 'socio'), updateProduct);
 router.delete('/:id', protect, authorize('admin'), deleteProduct); // Solo admin borra
 router.get('/:id', protect, getProductById);
+router.get('/movements/history', protect, authorize('admin', 'socio'), getAllMovements);
 
 export default router;

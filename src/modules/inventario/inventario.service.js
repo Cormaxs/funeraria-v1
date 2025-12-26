@@ -46,3 +46,10 @@ export const update = async (id, updateData) => {
 export const remove = async (id) => {
   return await Product.findByIdAndDelete(id);
 };
+
+export const getMovements = async (filter = {}) => {
+  return await Movement.find(filter)
+    .populate('productId', 'name sku') // Trae nombre y sku del producto
+    .populate('userId', 'email role')   // Trae quien hizo el movimiento
+    .sort({ createdAt: -1 });           // Los más recientes primero
+};

@@ -1,57 +1,47 @@
 # Backend funeraria
 
-Backend de funeraria (MVP), es una API rest, dividida en 3 modulos individuales reutulizables en futuros proyectos.<br>
+Proyecto Backend para una funeraria (MVP), es una API rest, dividida en 3 modulos(auth, socios, inventario) individuales reutulizables en futuros proyectos.
 
-+ autentificacion
-+ asociados
-+ gestion de inventario
+## indice
 
-Se usa Clean Architecture para el backend.
+* [Auth](./doc/autenticacion.md)
+* [Asociados](./doc/asociados.md)
+* [Inventario](./doc/ges-inv.md)
+* [General](./doc/general.md)
+* [Modulos](./doc/modulos.md)
 
-## 1) Módulo de Autenticación y Autorización
+## requrimientos
 
-### Rrequerimientos funcionales
+* Node
+* npm
 
-+ Registro y Login : Soporte para email/password.
-  
-+ Gestion de sesiones : Implementación de JWT.
-  
-+ Manejo de roles : Definición de permisos (Admin, Usuario, etc).
-  
-+ Recuperacion de cuentas : Flujo de "olvidé mi contraseña" vía email.(a futuro)
+## Pasos de instalacion
 
-+ Hashing : bcrypt.
-  
-+ Middleware de validacion : Un componente que verifique el token en cada petición antes de llegar a los otros módulos.
+1) clonar el repositorio
 
-[Documentacion de auth](./doc/autenticacion.md)
+```JSON
+    git clone https://github.com/Cormaxs/funeraria-v1
+```
 
-## 2) Módulo de Gestión de Asociados
+2) ejecutar el siguiente comando dentro de la carpeta creada al clonarlo.
 
-+ CRUD de Asociados
-  
-+ Categorización : Clasificar asociados (ej. Proveedor, Cliente VIP, Socio activo).
-  
-+ Historial de Actividad : Registro de las interacciones principales del asociado con el sistema.
-  
-+ Búsqueda y Filtros: Filtrado por estado, fecha de alta.
+```JSON
+    npm install
+```
 
-+ Validación de Identidad : Reglas para evitar duplicidad de documentos o emails.
+3) estando en la posicion /src ejecutar el comando.
 
-+ Relación con Auth: El asociado debe estar vinculado a un user_id del módulo de Login.
+```JSON
+    node app.js
+```
 
-[Documentacion de Asociados](./doc/asociados.md)
+## Dependencias
 
-## 3) Módulo de Gestión de Inventario
-
-+ Catálogo de Productos: Gestión de nombres, SKUs, categorías y descripciones.
-  
-+ Control de Stock: Registro de cantidades actuales y alertas de "stock bajo".
-  
-+ Movimientos de Inventario: Registro de entradas (compras/devoluciones) y salidas (ventas/mermas).
-  
-+ Transaccionalidad: Asegurar que si una salida de stock falla, no se registre el movimiento (Atomicidad).
-
-+ Trazabilidad: Auditoría de quién modificó el stock y en qué fecha.
-
-[Documentacion de Inventario](./doc/ges-inv.md)
+* bcryptjs -> 3.0.3
+* cors -> 2.8.5
+* dotenv -> 17.2.3
+* express -> 5.2.1
+* joi -> 18.0.2
+* jsonwebtoken -> 9.0.3
+* mongoose -> 9.0.2
+* morgan -> 1.10.1
