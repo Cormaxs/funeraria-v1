@@ -2,7 +2,7 @@
 
 ## Recordar poner el token para las peticiones
 
-* crea nuevo producto POST
+### crea nuevo producto POST
 
   permisos -> admin, socios
 
@@ -23,7 +23,7 @@ http://localhost:5000/api/inventario/products
 
 [ejemplo postman](https://www.postman.com/security-engineer-64827471/workspace/backend-facstock/request/41936041-ba2af251-7cbb-48a4-8016-526368fc0e76?action=share&source=copy-link&creator=41936041&ctx=documentation)
 
-* obtener lista de productos GET
+### obtener lista de productos GET
 
 permisos -> cualquier usuario
 
@@ -33,7 +33,8 @@ http://localhost:5000/api/inventario/products
 
 [ejemplo postman](https://www.postman.com/security-engineer-64827471/workspace/backend-facstock/request/41936041-39cfdbc1-7c9b-406d-9454-c14e2148b8c7?action=share&source=copy-link&creator=41936041&ctx=documentation)
 
-* Control de Stock POST
+### Control de Stock POST
+
 Registra una entrada o salida de mercadería. Si la operación falla, no se altera el stock
 
 Permisos -> Cualquier usuario autenticado.
@@ -51,7 +52,7 @@ http://localhost:5000/api/inventario/products/:productId/movement
 }
 ```
 
-* Obtener un Producto por ID GET
+### Obtener un Producto por ID GET
 
 permisos -> cualquier usuario
 
@@ -75,7 +76,7 @@ http://localhost:5000/api/inventario/:id
 
 [ejemplo postman](https://www.postman.com/security-engineer-64827471/workspace/backend-facstock/request/41936041-01d137dc-ac93-4bba-b541-ffcd7a326062?action=share&source=copy-link&creator=41936041&ctx=documentation)
 
-* Actualizar Producto PUT
+### Actualizar Producto PUT
 
 permisos -> solo admin
 
@@ -93,7 +94,7 @@ http://localhost:5000/api/inventario/:id
 
 [ejemplo postman](https://www.postman.com/security-engineer-64827471/workspace/backend-facstock/request/41936041-c0a11c11-fae7-462a-bc7c-98f88b2b027e?action=share&source=copy-link&creator=41936041&ctx=documentation)
 
-* Eliminar Producto DELETE
+### Eliminar Producto DELETE
 
 permisos -> admin
 
@@ -103,7 +104,7 @@ http://localhost:5000/api/inventario/:id
 
 [ejemplo postman](https://www.postman.com/security-engineer-64827471/workspace/backend-facstock/request/41936041-74969ffd-1108-4744-b42e-1f8ac8e353af?action=share&source=copy-link&creator=41936041&ctx=documentation)
 
-* Obtener Historial de Movimientos
+### Obtener Historial de Movimientos
 
 permisos -> admin
 

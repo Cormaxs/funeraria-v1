@@ -10,9 +10,9 @@
 }
 ```
 
-### test de rutas
+## test de rutas
 
-* register (publico) POST
+### register (publico) POST
   
 ```JSON
 http://localhost:5000/api/auth/register
@@ -28,7 +28,7 @@ http://localhost:5000/api/auth/register
 
 [ejemplo postman](https://www.postman.com/security-engineer-64827471/workspace/backend-facstock/request/41936041-2c4cf281-d6d2-4ffa-92ee-82d24d9b6f15?action=share&creator=41936041&ctx=documentation)
 
-* Login (Público)
+### Login (Público)
 
 ```JSON
 POST http://localhost:5000/api/auth/login
@@ -49,7 +49,7 @@ POST http://localhost:5000/api/auth/login
 eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY5NGRlYTc0MTYwYzZkMzJiMTBlZTM4YiIsImlhdCI6MTc2NjcxMzk3MiwiZXhwIjoxNzY2ODAwMzcyfQ.IFa1FtXRJGXA6VZPUBJM-2ElRO6owxitXTKtOXhDgbY
 ```
 
-* Ver Perfil (Protegido)
+### Ver Perfil (Protegido)
 
 ```JSON
 GET http://localhost:5000/api/auth/profile
@@ -63,7 +63,7 @@ GET http://localhost:5000/api/auth/profile
 
 [ejemplo postman](https://www.postman.com/security-engineer-64827471/workspace/backend-facstock/request/41936041-f972054b-64bf-4cea-910b-2a12cc4f7735?action=share&creator=41936041&ctx=documentation)
 
-* Actualizar Usuario (Solo Admin)
+### Actualizar Usuario (Solo Admin)
 
 ```JSON
 POST http://localhost:5000/api/auth/update/ID_DEL_USUARIO
@@ -83,7 +83,7 @@ POST http://localhost:5000/api/auth/update/ID_DEL_USUARIO
 
 [ejemplo postman](https://www.postman.com/security-engineer-64827471/workspace/backend-facstock/request/41936041-6b4c2722-d220-437e-a9d3-d3c0b9760922?action=share&source=copy-link&creator=41936041&ctx=documentation)
 
-* Eliminar Usuario (Solo Admin)
+### Eliminar Usuario (Solo Admin)
 
 ```JSON
 DELETE http://localhost:5000/api/auth/delete/ID_DEL_USUARIO

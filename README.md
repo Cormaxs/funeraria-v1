@@ -29,10 +29,20 @@ Proyecto Backend para una funeraria (MVP), es una API rest, dividida en 3 modulo
     npm install
 ```
 
-3) estando en la posicion /src ejecutar el comando.
+1) estando en la posicion /src ejecutar el comando.
 
 ```JSON
     node app.js
+```
+
+## Formato de variables de entorno
+
+Crear el archivo .env en la hubicacion /src/.env , donde esta app.js.
+
+```JSON
+PORT=5000
+MONGO_URI=mongodb://admin-db:ejemplo-de-uri-mongo-db
+JWT_SECRET=la-clave-que-deberia-ir
 ```
 
 ## Dependencias

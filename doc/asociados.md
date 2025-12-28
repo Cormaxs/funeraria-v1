@@ -1,6 +1,6 @@
 # Routes asociados test
 
-## estructura de los datos
+### estructura de los datos
 
 ```JSON
 {
@@ -22,9 +22,9 @@
 }
 ```
 
-### Todas las rutas necesitan token del usuario creado anteriormente, osea el admin
+#### Todas las rutas necesitan token del usuario creado anteriormente, osea el admin
 
-* Create Associate (POST)
+### Create Associate (POST)
   
 ```JSON
 http://localhost:5000/api/asociados
@@ -41,7 +41,7 @@ http://localhost:5000/api/asociados
 
 [ejemplo postman](https://www.postman.com/security-engineer-64827471/workspace/backend-facstock/request/41936041-dd8d5586-9d35-40f2-a3ad-05bf2cc13481?action=share&source=copy-link&creator=41936041&ctx=documentation)
 
-* Get asociados (GET)
+## Get asociados (GET)
 
 ```JSON
 http://localhost:5000/api/asociados?type=socio_activo&status=activo
@@ -49,7 +49,7 @@ http://localhost:5000/api/asociados?type=socio_activo&status=activo
 
 [ejemplo postman](https://www.postman.com/security-engineer-64827471/workspace/backend-facstock/request/41936041-b18ff453-204e-4cfb-ab71-ba7e4c140554?action=share&source=copy-link&creator=41936041&ctx=documentation)
 
-* Update Associate (PUT)
+## Update Associate (PUT)
 
 ```JSON
 http://localhost:5000/api/asociados/ID_DEL_ASOCIADO
@@ -64,7 +64,7 @@ http://localhost:5000/api/asociados/ID_DEL_ASOCIADO
 
 [ejemplo postman](https://www.postman.com/security-engineer-64827471/workspace/backend-facstock/request/41936041-7a1e9aa6-d684-4c90-95ff-f95d7f414c8c?action=share&source=copy-link&creator=41936041&ctx=documentation)
 
-* Toggle actividad asociados (PUT)
+## Toggle actividad asociados (PUT)
 
 ```JSON
 PATCH http://localhost:5000/api/asociados/ID_DEL_ASOCIADO/status
@@ -75,3 +75,30 @@ PATCH http://localhost:5000/api/asociados/ID_DEL_ASOCIADO/status
 ```
 
 [ejemplo postman](https://www.postman.com/security-engineer-64827471/workspace/backend-facstock/request/41936041-2a42b713-cc8b-44dc-b4d4-965753f8fee7?action=share&source=copy-link&creator=41936041&ctx=documentation)
+
+## Historial de pagos
+
+### Registrar un Pago POST
+  
+ requiere token admin
+
+```JSON
+http://localhost:5000/api/asociados/payment
+```
+
+```JSON
+{
+  "associateId": "ID_DEL_ASOCIADO",
+  "month": 12,
+  "year": 2025,
+  "amount": 150.00,
+  "notes": "Pago adelantado de Diciembre"
+}
+```
+
+### Consultar Historial de Pagos GET
+requiere token admin
+
+```JSON
+http://localhost:5000/api/asociados/payment/ID_DEL_ASOCIADO
+```
