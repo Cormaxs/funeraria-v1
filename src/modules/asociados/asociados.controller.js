@@ -44,3 +44,22 @@ export const changeStatus = async (req, res) => {
     res.status(400).json({ message: error.message });
   }
 };
+
+
+export const getAsociadosBusqueda = async (req, res) => {
+  try {
+    // Extraemos todos los posibles filtros de req.query
+    const results = await AsociadosService.searchAsociados(req.query);
+    
+    res.json({
+      ok: true,
+      ...results
+    });
+  } catch (error) {
+    res.status(500).json({
+      ok: false,
+      message: "Error en la búsqueda de asociados",
+      error: error.message
+    });
+  }
+};

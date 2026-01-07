@@ -3,7 +3,7 @@ import mongoose from 'mongoose';
 const paymentSchema = new mongoose.Schema({
   associateId: { 
     type: mongoose.Schema.Types.ObjectId, 
-    ref: 'Users', // Referencia exacta a tu modelo
+    ref: 'User', // Referencia exacta a tu modelo
     required: true 
   },
   userId: { 

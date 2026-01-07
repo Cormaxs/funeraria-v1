@@ -3,7 +3,7 @@ import Movement from './movimiento.model.js';
 
 
 // Gestión del catálogo
-export const createProduct = async (data) => await Product.create(data);
+export const createProduct = async (data) =>  {console.log("data", data); await Product.create(data);}
 export const getAllProducts =  async (filter = {}) => {
   return await Product.find(filter).sort({ createdAt: -1 });
 };
@@ -52,4 +52,53 @@ export const getMovements = async (filter = {}) => {
     .populate('productId', 'name sku') // Trae nombre y sku del producto
     .populate('userId', 'email role')   // Trae quien hizo el movimiento
     .sort({ createdAt: -1 });           // Los más recientes primero
+};
+
+
+export const searchProducts = async (filters) => {
+  const { nombre, sku, categoria, status, stockMax, fechaInicio, fechaFin, page = 1, limit = 10 } = filters;
+  const query = {};
+
+  // Búsqueda por Nombre o SKU (Regex para búsqueda parcial)
+  if (nombre) query.name = { $regex: nombre, $options: 'i' };
+  if (sku) query.sku = { $regex: sku, $options: 'i' };
+
+  // Filtro exacto por Categoría
+  if (categoria) query.category = categoria;
+
+  // Filtro por Estado (activo/inactivo)
+  if (status) query.status = status;
+
+  // Filtro de Stock (Productos con stock menor o igual a X)
+  if (stockMax) {
+    query.stock = { $lte: Number(stockMax) };
+  }
+
+  // Filtro por Rango de Fecha de creación
+  if (fechaInicio || fechaFin) {
+    query.createdAt = {};
+    if (fechaInicio) query.createdAt.$gte = new Date(fechaInicio);
+    if (fechaFin) query.createdAt.$lte = new Date(fechaFin);
+  }
+
+  const skip = (page - 1) * limit;
+
+  const [total, products] = await Promise.all([
+    Product.countDocuments(query),
+    Product.find(query)
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit)
+      .lean()
+  ]);
+
+  return {
+    products,
+    pagination: {
+      totalItems: total,
+      totalPages: Math.ceil(total / limit),
+      currentPage: Number(page),
+      limit: Number(limit)
+    }
+  };
 };

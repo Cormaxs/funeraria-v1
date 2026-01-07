@@ -10,7 +10,7 @@ const associateSchema = new mongoose.Schema({
   documentId: { type: String, required: true, unique: true },
   type: { 
     type: String, 
-    enum: ['proveedor', 'cliente_vip', 'socio_activo'], 
+    enum: ['proveedor', 'cliente_vip', 'socio'], 
     required: true 
   },
   status: { type: String, enum: ['activo', 'inactivo'], default: 'activo' },

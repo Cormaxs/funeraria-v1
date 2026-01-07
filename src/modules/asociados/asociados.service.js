@@ -44,3 +44,52 @@ export const toggleStatus = async (id) => {
 
   return await associate.save();
 };
+
+
+
+export const searchAsociados = async (filters) => {
+  const { nombre, dni, status, fechaInicio, fechaFin, page = 1, limit = 10 } = filters;
+  const query = {};
+
+  // Filtro por Nombre (Insensible a mayúsculas/minúsculas)
+  if (nombre) {
+    query.fullName = { $regex: nombre, $options: 'i' };
+  }
+
+  // Filtro por DNI (Búsqueda parcial)
+  if (dni) {
+    query.documentId = { $regex: dni, $options: 'i' };
+  }
+
+  // Filtro por Estado (activo/inactivo)
+  if (status) {
+    query.status = status;
+  }
+
+  // Filtro por Rango de Fecha de Creación
+  if (fechaInicio || fechaFin) {
+    query.createdAt = {};
+    if (fechaInicio) query.createdAt.$gte = new Date(fechaInicio);
+    if (fechaFin) query.createdAt.$lte = new Date(fechaFin);
+  }
+
+  const skip = (page - 1) * limit;
+
+  const [total, asociados] = await Promise.all([
+    Asociados.countDocuments(query),
+    Asociados.find(query)
+      .sort({ createdAt: -1 })
+      .skip(skip)
+      .limit(limit)
+      .lean()
+  ]);
+
+  return {
+    asociados,
+    pagination: {
+      totalItems: total,
+      totalPages: Math.ceil(total / limit),
+      currentPage: Number(page)
+    }
+  };
+};

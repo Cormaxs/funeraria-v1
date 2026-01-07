@@ -4,9 +4,10 @@ import {
   getAssociates, 
   createAssociate, 
   updateAssociate, 
-  changeStatus
+  changeStatus, 
+  getAsociadosBusqueda
 } from './asociados.controller.js';
-import { createPayment, getAssociatePayments } from './pagos/payment.controller.js';//pagos
+import { createPayment, getAssociatePayments, getPaymentsReport } from './pagos/payment.controller.js';//pagos
 
 
 const router = express.Router();
@@ -28,6 +29,10 @@ router.post('/payment', protect, authorize('admin', 'socio'), createPayment);
 
 // Ver historial de un asociado específico
 router.get('/payment/:associateId', protect, getAssociatePayments);
+router.get('/payment/reports/revenue', protect, getPaymentsReport);
+
+// Ruta de búsqueda avanzada
+router.get('/search', protect, authorize('admin', 'socio'), getAsociadosBusqueda);
 
 export default router;
 

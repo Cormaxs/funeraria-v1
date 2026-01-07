@@ -2,6 +2,7 @@ import * as inventoryService from './inventario.service.js';
 
 export const addProduct = async (req, res) => {
   try {
+    console.log("Request Body:", req.body);
     const product = await inventoryService.createProduct(req.body);
     res.status(201).json(product);
   } catch (error) {
@@ -74,5 +75,23 @@ export const getAllMovements = async (req, res) => {
     res.json(movements);
   } catch (error) {
     res.status(500).json({ message: error.message });
+  }
+};
+
+
+export const getProductsSearch = async (req, res) => {
+  try {
+    const results = await inventoryService.searchProducts(req.query);
+    
+    res.json({
+      ok: true,
+      ...results
+    });
+  } catch (error) {
+    res.status(500).json({
+      ok: false,
+      message: "Error al buscar productos",
+      error: error.message
+    });
   }
 };
